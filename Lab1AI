@@ -1,0 +1,25 @@
+create table laboratories (
+lab_number INT Primary Key,
+Lab_name VARCHAR(100) Not null,
+activity_type TEXT,
+head_of_lab VARCHAR(100),
+workplaces_count INT,
+has_project_equipment BOOLEAN,
+department_number INT
+);
+
+create table Schedule (
+group_number VARCHAR(20) Not null,
+lab_number INT,
+discipline VARCHAR(100) Not null,
+day_of_week varchar(15) not null,
+lesson_number int not null,
+
+Constraint pk_schedule
+primary key (group_number,day_of_week,lesson_number),
+
+Constraint fk_laboratory
+foreign key (lab_number)
+References laboratories (lab_number)
+on delete cascade
+)
